@@ -70,8 +70,12 @@ public class Timer {
              if (postFunction != null) {
                  postFunction.accept(res);
              }
+             lap();
         }
-         return meanLapTime();
+        pause();
+        double mlt =meanLapTime();
+        resume();
+         return mlt;
         // END 
     }
 
@@ -211,7 +215,7 @@ public class Timer {
      */
     private static double toMillisecs(long ticks) {
         // FIXME by replacing the following code
-         return System.currentTimeMillis();
+         return ticks/1000000.0;
         // END 
     }
 
