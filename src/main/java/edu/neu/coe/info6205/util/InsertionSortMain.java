@@ -46,7 +46,6 @@ public class InsertionSortMain {
 
 	public static void exec(int n, int runs) {
 
-		DecimalFormat df = new DecimalFormat("####.######");
 		Benchmark_Timer benchmarkTimer = new Benchmark_Timer<Integer[]>("Insertion Sort",
 				t -> new InsertionSort<Integer>().sort(t, 0, t.length));
 		double randomTime, partialTime, orderedTime, reverseTime;
@@ -54,10 +53,9 @@ public class InsertionSortMain {
 		orderedTime = benchmarkTimer.runFromSupplier(() -> orderedArray(n), runs);
 		partialTime = benchmarkTimer.runFromSupplier(() -> partiallyOrderedArray(n), runs);
 		reverseTime = benchmarkTimer.runFromSupplier(() -> reverseOrderedArray(n), runs);
-		System.out.println(
-				n + " \t \t" + "Random" + " \t \t " + "Ordered" + " \t \t " + "Partial" + " \t \t " + "Reverse");
-		System.out.println(n + " \t \t" + df.format(randomTime) + " \t \t " + df.format(orderedTime) + " \t \t "
-				+ df.format(partialTime) + " \t \t " + df.format(reverseTime));
+		
+		System.out.println("Length : " + n + "  Random Array : " + (randomTime) + " Sorted array: " + (orderedTime) + " partial ordered: "
+				+ (partialTime) + " Reverse order: " + (reverseTime));
 	}
 
 	// return j;
