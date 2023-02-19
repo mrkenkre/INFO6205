@@ -53,9 +53,19 @@ public class ThreeSumQuadratic implements ThreeSum {
 			}
 		}
         // END 
+		System.out.println(triples);
         return triples;
     }
 
     private final int[] a;
     private final int length;
+    
+    public static void main(String args[]) {
+    	int[] arr ={0,0,0,0};
+    	//int[] arr ={-1,0,1,2,-1,-4};
+    	ThreeSumQuadratic ts=new ThreeSumQuadratic(arr);
+    	ts.getTriples();
+    	//System.out.println(ts.getTriples());
+    	
+    }
 }
