@@ -166,19 +166,29 @@ public class SortBenchmark {
 		if (isConfigBenchmarkStringSorter("quicksort3way"))
 			runStringSortBenchmark(words, nWords, nRuns, new QuickSort_3way<>(nWords, config), timeLoggersLinearithmic);
 
-		if (isConfigBenchmarkStringSorter("quicksortDualPivot"))
-			runStringSortBenchmark(words, nWords, nRuns, new QuickSort_DualPivot<>(nWords, config),
-					timeLoggersLinearithmic);
+		if (isConfigBenchmarkStringSorter("quicksortDualPivot")) {
+			Helper<String> helper = HelperFactory.create("Quick sort dual pivot", nWords, config);
+			// runStringSortBenchmark(words, nWords, nRuns, new QuickSort_Basic<>(nWords,
+			// config), timeLoggersLinearithmic);
+			runStringSortBenchmark(words, nWords, nRuns, new QuickSort_DualPivot<>(helper), timeLoggersLinearithmic);
+			logger.info(helper.showStats());
+		}
+
+		/*
+		 * if (isConfigBenchmarkStringSorter("quicksortDualPivot"))
+		 * runStringSortBenchmark(words, nWords, nRuns, new
+		 * QuickSort_DualPivot<>(nWords, config), timeLoggersLinearithmic);
+		 */
 
 		if (isConfigBenchmarkStringSorter("quicksort"))
 			runStringSortBenchmark(words, nWords, nRuns, new QuickSort_Basic<>(nWords, config),
 					timeLoggersLinearithmic);
-		
-		 if (isConfigBenchmarkStringSorter("heapsort")) {
-	            Helper<String> helper = HelperFactory.create("Heapsort", nWords, config);
-	            runStringSortBenchmark(words, nWords, nRuns, new HeapSort<>(helper), timeLoggersLinearithmic);
-	            logger.info(helper.showStats());
-	        }
+
+		if (isConfigBenchmarkStringSorter("heapsort")) {
+			Helper<String> helper = HelperFactory.create("Heapsort", nWords, config);
+			runStringSortBenchmark(words, nWords, nRuns, new HeapSort<>(helper), timeLoggersLinearithmic);
+			logger.info(helper.showStats());
+		}
 
 		if (isConfigBenchmarkStringSorter("introsort"))
 			runStringSortBenchmark(words, nWords, nRuns, new IntroSort<>(nWords, config), timeLoggersLinearithmic);
@@ -416,7 +426,7 @@ public class SortBenchmark {
 		if (isConfigBoolean(Config.HELPER, BaseHelper.INSTRUMENT))
 			benchmarkStringSortersInstrumented(getWords(resource, SortBenchmark::getLeipzigWords), nWords, nRuns);
 		else
-            benchmarkStringSorters(getWords(resource, SortBenchmark::getLeipzigWords), nWords, nRuns);
+			benchmarkStringSorters(getWords(resource, SortBenchmark::getLeipzigWords), nWords, nRuns);
 	}
 
 	@SuppressWarnings("SameParameterValue")
