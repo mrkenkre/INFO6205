@@ -34,12 +34,16 @@ public class MergeSortBasic<X extends Comparable<X>> extends SortWithHelper<X> {
         super(DESCRIPTION + ":" + getConfigString(config), N, config);
         insertionSort = new InsertionSort<>(getHelper());
     }
+    
+    
 
     private static String getConfigString(Config config) {
         StringBuilder stringBuilder = new StringBuilder();
         if (config.getBoolean("mergesort", "insurance")) stringBuilder.append(" with insurance comparison");
         return stringBuilder.toString();
     }
+    
+    
 
     @Override
     public X[] sort(X[] xs, boolean makeCopy) {
@@ -96,6 +100,10 @@ public class MergeSortBasic<X extends Comparable<X>> extends SortWithHelper<X> {
             } else helper.copy(aux, i++, a, k);
     }
 
+    
+    public static final String MERGESORT = "mergesort";
+    public static final String NOCOPY = "nocopy";
+    public static final String INSURANCE = "insurance";
 
     private X[] aux = null;
     private final InsertionSort<X> insertionSort;

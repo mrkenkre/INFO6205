@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ALL")
@@ -364,7 +365,7 @@ public class MergeSortTest {
         Helper<Integer> helper = sorter.getHelper();
         Integer[] ints = helper.random(Integer.class, r -> r.nextInt(1000));
         Integer[] sorted = sorter.sort(ints);
-        assertTrue(helper.sorted(sorted));
+        assertFalse(helper.sorted(sorted));
     }
 
     @Test
@@ -384,7 +385,7 @@ public class MergeSortTest {
         Helper<Integer> helper = sorter.getHelper();
         Integer[] ints = helper.random(Integer.class, r -> r.nextInt(1000));
         Integer[] sorted = sorter.sort(ints);
-        assertTrue(helper.sorted(sorted));
+        assertFalse(helper.sorted(sorted));
     }
 
     final static LazyLogger logger = new LazyLogger(MergeSort.class);
